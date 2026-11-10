@@ -1,0 +1,33 @@
+{
+  "source": "measured from take1.mp3 (pauses by RMS)",
+  "voiceStart": 0.1,
+  "voiceEnd": 16.1,
+  "voiceFile": "core/vo/take1.mp3",
+  "sentences": [
+    {
+      "a": 0.18,
+      "b": 2.76,
+      "text": "So this guy wants to dig straight to the center of the Earth."
+    },
+    {
+      "a": 3.0,
+      "b": 4.72,
+      "text": "Easy, right? Just keep digging."
+    },
+    {
+      "a": 5.14,
+      "b": 7.9,
+      "text": "The deepest hole ever drilled is about twelve kilometers."
+    },
+    {
+      "a": 8.34,
+      "b": 12.68,
+      "text": "Down there, the rock was around a hundred eighty degrees Celsius, and acted like plastic."
+    },
+    {
+      "a": 12.98,
+      "b": 16.1,
+      "text": "So the drilling stopped, about a fifth of one percent of the way there."
+    }
+  ]
+}
