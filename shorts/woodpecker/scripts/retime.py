@@ -1,0 +1,62 @@
+"""Fit the animation to the real voice-over.
+
+    python3 scripts/retime.py path/to/voice.wav|mp3
+
+Copies the voice to public/woodpecker/vo/, finds the pauses by loudness (RMS every 20 ms, silence below -42 dB for
+>= 0.18 s, as the skill says - more reliable than word-timestamp edges), takes the 6 longest pauses inside the speech
+as the breaks between the 7 sentences and rewrites src/woodpecker/timing.json. Every beat in time.ts is derived
+from these sentence times, so the whole animation, the pecks and the sound cues follow automatically.
+"""
+import json, os, shutil, subprocess, sys
+import numpy as np
+
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+TIMING = os.path.join(ROOT, 'src', 'woodpecker', 'timing.json')
+VOICE_AT = 0.1  # the voice is placed 0.1 s into the composition
+
+
+def load(path, sr=16000):
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-ac', '1', '-ar', str(sr), '-f', 's16le', '-'],
+                         check=True, capture_output=True).stdout
+    return np.frombuffer(raw, np.int16).astype(np.float32) / 32768, sr
+
+
+def main(src):
+    x, sr = load(src)
+    hop = int(0.02 * sr)
+    rms = np.sqrt(np.convolve(x ** 2, np.ones(hop) / hop, 'same')[::hop] + 1e-12)
+    db = 20 * np.log10(rms / (rms.max() + 1e-12))
+    loud = db > -42
+    idx = np.flatnonzero(loud)
+    start, end = idx[0] * 0.02, (idx[-1] + 1) * 0.02
+    gaps, i = [], idx[0]
+    while i < idx[-1]:
+        if not loud[i]:
+            j = i
+            while j < len(loud) and not loud[j]: j += 1
+            if (j - i) * 0.02 >= 0.18: gaps.append((i * 0.02, j * 0.02))
+            i = j
+        else:
+            i += 1
+    d = json.load(open(TIMING))
+    n = len(d['sentences'])
+    if len(gaps) < n - 1:
+        sys.exit(f'only {len(gaps)} pauses found, need {n - 1}: check the take or lower the threshold')
+    breaks = sorted(sorted(gaps, key=lambda g: g[1] - g[0], reverse=True)[:n - 1])
+    bounds = [start] + [v for g in breaks for v in g] + [end]
+    for k, s in enumerate(d['sentences']):
+        s['a'] = round(VOICE_AT + bounds[2 * k], 3)
+        s['b'] = round(VOICE_AT + bounds[2 * k + 1], 3)
+    ext = os.path.splitext(src)[1]
+    dst = os.path.join(ROOT, 'public', 'woodpecker', 'vo', 'take1' + ext)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if os.path.abspath(src) != os.path.abspath(dst): shutil.copy(src, dst)
+    d.update(source=f'measured from {os.path.basename(src)} (pauses by RMS)', voiceStart=VOICE_AT,
+             voiceEnd=round(VOICE_AT + end, 3), voiceFile=f'woodpecker/vo/take1{ext}')
+    json.dump(d, open(TIMING, 'w'), indent=2)
+    for s in d['sentences']: print(f"{s['a']:6.2f} - {s['b']:6.2f}  {s['text']}")
+    print(f"voice ends {d['voiceEnd']:.2f} s -> video {d['voiceEnd'] + 0.9:.2f} s")
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])

@@ -1,0 +1,43 @@
+{
+  "source": "estimate (0.38 s/word, 0.35 s pauses) - run scripts/retime.py on the real voice to replace",
+  "voiceStart": 0.1,
+  "voiceEnd": 28.8,
+  "sentences": [
+    {
+      "a": 0.1,
+      "b": 4.28,
+      "text": "A woodpecker smashes its head into a tree over and over."
+    },
+    {
+      "a": 4.63,
+      "b": 6.91,
+      "text": "Why doesn't it get a concussion?"
+    },
+    {
+      "a": 7.26,
+      "b": 11.06,
+      "text": "Many people assumed its skull works like a shock absorber."
+    },
+    {
+      "a": 11.41,
+      "b": 17.11,
+      "text": "But when scientists filmed woodpeckers in slow motion, the head stopped hard, like a hammer."
+    },
+    {
+      "a": 17.46,
+      "b": 19.74,
+      "text": "Cushioning would only weaken each peck."
+    },
+    {
+      "a": 20.09,
+      "b": 21.99,
+      "text": "The real protection is size."
+    },
+    {
+      "a": 22.34,
+      "b": 28.8,
+      "text": "A woodpecker's brain is tiny, and the same jolt creates far less pressure inside a small brain."
+    }
+  ],
+  "voiceFile": null
+}
