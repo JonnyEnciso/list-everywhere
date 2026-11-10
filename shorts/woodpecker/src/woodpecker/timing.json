@@ -1,37 +1,37 @@
 {
-  "source": "estimate (0.36 s/word, 0.3 s pauses) - run scripts/retime.py on the real voice to replace",
+  "source": "measured from take1.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 20.68,
-  "voiceFile": null,
+  "voiceEnd": 19.74,
+  "voiceFile": "woodpecker/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.1,
-      "b": 4.42,
+      "a": 0.14,
+      "b": 4.44,
       "text": "So this woodpecker slams its face into a tree, over and over."
     },
     {
-      "a": 4.72,
-      "b": 5.8,
+      "a": 4.94,
+      "b": 6.0,
       "text": "Why no concussion?"
     },
     {
-      "a": 6.1,
-      "b": 9.34,
+      "a": 6.4,
+      "b": 9.3,
       "text": "People figured its skull works like a shock absorber."
     },
     {
-      "a": 9.64,
-      "b": 13.6,
+      "a": 9.6,
+      "b": 13.44,
       "text": "But slow-motion video shows the head stops hard, like a hammer."
     },
     {
-      "a": 13.9,
-      "b": 15.7,
+      "a": 13.84,
+      "b": 15.28,
       "text": "The real trick is size."
     },
     {
-      "a": 16.0,
-      "b": 20.68,
+      "a": 15.62,
+      "b": 19.74,
       "text": "Its brain is so small, the same hit makes way less pressure inside."
     }
   ]

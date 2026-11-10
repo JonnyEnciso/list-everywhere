@@ -3,8 +3,8 @@
     python3 scripts/retime.py path/to/voice.wav|mp3
 
 Copies the voice to public/woodpecker/vo/, finds the pauses by loudness (RMS every 20 ms, silence below -42 dB for
->= 0.18 s, as the skill says - more reliable than word-timestamp edges), takes the 6 longest pauses inside the speech
-as the breaks between the 7 sentences and rewrites src/woodpecker/timing.json. Every beat in time.ts is derived
+>= 0.18 s, as the skill says - more reliable than word-timestamp edges), picks the pauses inside the speech
+that work as the sentence breaks (best fit to each line's word count) and rewrites src/woodpecker/timing.json. Every beat in time.ts is derived
 from these sentence times, so the whole animation, the pecks and the sound cues follow automatically.
 """
 import json, os, shutil, subprocess, sys
@@ -42,7 +42,16 @@ def main(src):
     n = len(d['sentences'])
     if len(gaps) < n - 1:
         sys.exit(f'only {len(gaps)} pauses found, need {n - 1}: check the take or lower the threshold')
-    breaks = sorted(sorted(gaps, key=lambda g: g[1] - g[0], reverse=True)[:n - 1])
+    # choose the n-1 pauses whose sentence lengths best fit each line's word count (commas also make pauses,
+    # so the longest pauses are not always the sentence breaks); longer pauses win ties
+    from itertools import combinations
+    words = [len(s['text'].split()) for s in d['sentences']]
+    rate = (end - start) / sum(words)
+    def cost(combo):
+        b = [start] + [v for g in combo for v in g] + [end]
+        fit = sum(((b[2 * k + 1] - b[2 * k]) - w * rate) ** 2 for k, w in enumerate(words))
+        return fit - 0.5 * sum(g[1] - g[0] for g in combo)
+    breaks = list(min(combinations(gaps, n - 1), key=cost))
     bounds = [start] + [v for g in breaks for v in g] + [end]
     for k, s in enumerate(d['sentences']):
         s['a'] = round(VOICE_AT + bounds[2 * k], 3)

@@ -14,17 +14,17 @@ export const T = {
   rapidEnd: S[1].a + 0.3, //        rapid pecking stops as the question starts
   stars: at(1, 0.55), //            "Why no conCUSSion?" dizzy stars pop on
   starsOff: S[2].a + 0.1, //        calm blink, stars pop away
-  xray: at(2, 0.3), //              "its SKULL" x-ray lens opens on the head
-  springPecks: at(2, 0.55), //      "like a SHOCK absorber" spring pecks begin
+  xray: at(2, 0.33), //             "its SKULL" x-ray lens opens on the head
+  springPecks: at(2, 0.45), //      "works like a shock absorber" spring pecks (run on into the next line)
   rec: S[3].a + 0.05, //            "But slow-motion VIDEO" camera viewfinder
-  slow: at(3, 0.2), //              "SLOW-motion" spring pops out, slow-mo strike starts
+  slow: at(3, 0.3), //              "video SHOWS the head" spring pops out, slow-mo strike starts
   slowHit: at(3, 0.92), //          "like a HAMMER" head + hammer hit together
   recOff: S[4].a - 0.05,
   dolly: S[4].a + 0.05, //          "The real trick" camera dives into the head
   size: at(4, 0.85), //             "is SIZE" tiny brain pulses
   cut: S[5].a - 0.05, //            hard cut: woodpecker head vs. big round head
   jolt: at(5, 0.55), //             "the same HIT" both heads stop hard
-  pressure: at(5, 0.8), //          "way less PRESSURE" big brain squeezed, small brain calm
+  pressure: at(5, 0.82), //          "way less PRESSURE" big brain squeezed, small brain calm
   loop: VOICE_END + 0.15, //        cut back to frame-0 shot: pecking again (loops)
 };
 

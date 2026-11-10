@@ -17,17 +17,17 @@ Voice: ElevenLabs engine through Higgsfield `text2speech_v2` (variant `elevenlab
 Higgsfield job `0de174ac-b3b9-4878-bd00-a4cacb881a23` (0.9 credits). An earlier 70-word take (Seed Audio,
 "John", job `132eada2-2e84-405e-9ed7-de419c6d042c`) belongs to the longer first draft and is not used.
 
-## Beat sheet (times = estimates until `retime.py` measures the real voice)
+## Beat sheet (times measured from the voice take by `scripts/retime.py`)
 
 | time | words | on screen | sound |
 |---|---|---|---|
-| 0 - 4.4 | "So this woodpecker slams its face into a tree, over and over." | frame 0 = premise: woodpecker on a trunk, rapid pecks, wood chips, peck hole grows | knocks, small shake per hit |
-| 4.7 - 5.8 | "Why no concussion?" | camera pushes in; on "concussion" dizzy stars pop around the head; a calm blink pops them away | pops |
-| 6.1 - 9.3 | "People figured its skull works like a shock absorber." | on "skull" an x-ray lens opens on the head; on "shock absorber" a coil spring between beak and brain boings on every peck | whoosh, knock + boing |
-| 9.6 - 13.6 | "But slow-motion video shows the head stops hard, like a hammer." | REC viewfinder; on "slow-motion" the spring pops out of the head; one slow-motion strike while a hammer swings at a nail on the other side of the trunk; both stop hard together on "hammer" | beep, boing, big thud + clang |
-| 13.9 - 15.7 | "The real trick is size." | camera dives into the head; x-ray shows the tiny calm brain, which pulses on "size" | whoosh, pop |
-| 16.0 - 20.7 | "Its brain is so small, the same hit makes way less pressure inside." | hard cut: woodpecker head (tiny brain) beside a big round cartoon head (big brain); on "hit" both stop hard; on "pressure" red rings squeeze the big worried brain (sweat drop) while the small one smiles | thud, squeeze |
-| 20.8 - end | | cut back to the frame-0 shot, pecking again (loops) | knocks |
+| 0.1 - 4.4 | "So this woodpecker slams its face into a tree, over and over." | frame 0 = premise: woodpecker on a trunk, rapid pecks, wood chips, peck hole grows | knocks, small shake per hit |
+| 4.9 - 6.0 | "Why no concussion?" | camera pushes in; on "concussion" dizzy stars pop around the head; a calm blink pops them away | pops |
+| 6.4 - 9.3 | "People figured its skull works like a shock absorber." | on "skull" an x-ray lens opens on the head; then a coil spring between beak and brain boings on every peck | whoosh, knock + boing |
+| 9.6 - 13.4 | "But slow-motion video shows the head stops hard, like a hammer." | REC viewfinder; on "shows the head" the spring pops out of the head; one slow-motion strike while a hammer swings at a nail on the other side of the trunk; both stop hard together on "hammer" | beep, boing, big thud + clang |
+| 13.8 - 15.3 | "The real trick is size." | camera dives into the head; x-ray shows the tiny calm brain, which pulses on "size" | whoosh, pop |
+| 15.6 - 19.7 | "Its brain is so small, the same hit makes way less pressure inside." | hard cut: woodpecker head (tiny brain) beside a big round cartoon head (big brain); on "hit" both stop hard; on "pressure" red rings squeeze the big worried brain (sweat drop) while the small one smiles | thud, squeeze |
+| 19.9 - 20.6 | | cut back to the frame-0 shot, pecking again (loops) | knocks |
 
 ## Differences from the skill, and why
 
@@ -38,7 +38,7 @@ Higgsfield job `0de174ac-b3b9-4878-bd00-a4cacb881a23` (0.9 credits). An earlier 
   neck, so pecks are animated instead of pose swaps.
 - **ElevenLabs through Higgsfield** (no ElevenLabs connector in that session), so `eleven_v4` and the ElevenLabs
   voice library could not be chosen directly. The session's network blocked Higgsfield's CDN, so the voice file
-  could not be downloaded there and the timing is an estimate until `retime.py` runs.
+  could not be downloaded at first; once the environment allowed it, `retime.py` measured the take (19.7 s).
 - **Rendered on CPU** (no graphics card in that container).
 - **Sound effects synthesized** in `scripts/gen_sfx.py` (no downloads, no credits).
 
