@@ -108,12 +108,16 @@ export const Guy: React.FC<{shovel?: ShovelPose; face?: Face; breathe?: number; 
 };
 
 // ------------------------------------------------------------------------------------------------ face on a blob (core / goo)
-export const BlobFace: React.FC<{r: number; open: number; lookY?: number; lookX?: number; mood?: 'smirk' | 'smile' | 'o' | 'sleep'}> = ({r, open, lookY = 0, lookX = 0, mood = 'smile'}) => {
+export const BlobFace: React.FC<{r: number; open: number; lookY?: number; lookX?: number; mood?: 'smirk' | 'smile' | 'o' | 'sleep'; squint?: boolean}> = ({r, open, lookY = 0, lookX = 0, mood = 'smile', squint = false}) => {
   const ey = -r * 0.12, ex = r * 0.3, er = r * 0.16;
   const lid = 1 - open;
   return (
     <g>
-      {[-1, 1].map((s) => (
+      {squint && [-1, 1].map((s) => (
+        <path key={`q${s}`} d={`M${s * ex - er} ${ey + er * 0.3} L ${s * ex} ${ey - er * 0.5} L ${s * ex + er} ${ey + er * 0.3}`}
+          fill="none" stroke={INK} strokeWidth={W} strokeLinecap="round" strokeLinejoin="round" />
+      ))}
+      {!squint && [-1, 1].map((s) => (
         <g key={s}>
           <ellipse cx={s * ex} cy={ey} rx={er} ry={er * 1.15 * Math.max(0.08, open)} fill="#fff" stroke={INK} strokeWidth={W * 0.8} />
           {open > 0.3 && <circle cx={s * ex + lookX * er * 0.4} cy={ey + lookY * er * 0.45} r={er * 0.5 * Math.min(1, open * 1.4)} fill={INK} />}

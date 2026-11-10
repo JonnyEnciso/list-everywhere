@@ -7,7 +7,7 @@ const S = timing.sentences;
 export const at = (i: number, f: number) => S[i].a + (S[i].b - S[i].a) * f;
 export const VOICE_START = timing.voiceStart;
 export const VOICE_END = timing.voiceEnd;
-export const DURATION = VOICE_END + 0.9;
+export const DURATION = VOICE_END + 1.6; // a calm tail after the last word so the ending doesn't feel cut off
 
 // every beat as a constant (see beat sheet in README.md)
 export const T = {
@@ -27,7 +27,9 @@ export const T = {
   lens: at(4, 0.48), //             magnifier on the tiny hole
   line: at(4, 0.62), //             dashed line to the center grows
   there: at(4, 0.95), //            "of the way THERE" core smirks
-  loop: VOICE_END + 0.15, //        cut back to the frame-0 shot (loops)
+  nobody: S[5].a, //                "NOBODY's ever gotten anywhere close" magnifier pops away, core shrugs smugly
+  quake: at(6, 0.6), //             "comes from EARTHQUAKE waves" a quake bursts on the surface, waves ring through the planet
+  loop: VOICE_END + 0.45, //        cut back to the frame-0 shot (loops)
 };
 
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));

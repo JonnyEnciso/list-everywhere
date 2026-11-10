@@ -126,9 +126,19 @@ const TOP = {x: EARTH.x, y: EARTH.y - EARTH.R};
 const LENS = {x: 790, y: 420, r: 175};
 const EarthShot: React.FC<{t: number}> = ({t}) => {
   const s = Math.exp(lerp(Math.log(10), 0, ramp(t, T.earth, T.earth + 0.75, easeOut)));
-  const lens = pop(t, T.lens, 0.3);
+  const lens = pop(t, T.lens, 0.3) * (1 - ramp(t, T.nobody + 0.25, T.nobody + 0.5, easeIn));
   const line = ramp(t, T.line, T.line + 0.7, easeInOut);
   const coreR = EARTH.R * 0.19;
+  // earthquake: a burst on the surface, rings of waves sweep through the planet to a seismometer on the far side
+  const qa = (-145 * Math.PI) / 180, sa = (35 * Math.PI) / 180;
+  const Q = {x: EARTH.x + Math.cos(qa) * EARTH.R, y: EARTH.y + Math.sin(qa) * EARTH.R};
+  const SM = {x: EARTH.x + Math.cos(sa) * EARTH.R, y: EARTH.y + Math.sin(sa) * EARTH.R};
+  const WAVE_V = 700;
+  const rings = [0, 0.22, 0.44].map((d) => (t - T.quake - d) * WAVE_V).filter((r) => r > 0 && r < EARTH.R * 2.1);
+  const arrive = T.quake + (2 * EARTH.R) / WAVE_V;
+  const tickled = rings.some((r) => Math.abs(r - EARTH.R) < coreR * 1.2);
+  const fadeInfo = 1 - ramp(t, T.quake - 0.5, T.quake - 0.15);
+  const shrug = t >= T.nobody + 0.35 ? 0.08 * wobble(t, T.nobody + 0.35, 2.5, 4) : 0;
   return (
     <AbsoluteFill style={{background: '#14203A'}}>
       <svg width={1080} height={1920} style={{position: 'absolute'}}>
@@ -141,14 +151,41 @@ const EarthShot: React.FC<{t: number}> = ({t}) => {
           <circle cx={EARTH.x} cy={EARTH.y} r={EARTH.R * 0.546} fill="#FFB547" stroke={INK} strokeWidth={W} />
           <circle cx={EARTH.x} cy={EARTH.y} r={coreR} fill="#FFD25A" stroke={INK} strokeWidth={W} />
           <g transform={`translate(${EARTH.x} ${EARTH.y + coreR * 0.1})`}>
-            <BlobFace r={coreR} open={1} lookY={-1} lookX={0} mood={t >= T.there ? 'smirk' : 'o'} />
+            <g transform={`scale(${1 + shrug} ${1 - shrug})`}>
+              <BlobFace r={coreR} open={t >= T.nobody + 0.35 && t < T.quake ? 0.6 : 1} lookY={t >= T.quake ? 0 : -1} lookX={t >= T.quake && !tickled ? -0.8 : 0}
+                mood={t >= T.there ? 'smirk' : 'o'} squint={tickled} />
+            </g>
           </g>
           {/* "you are here" pin */}
           <path d={`M${TOP.x} ${TOP.y} l -14 -34 a 15 15 0 1 1 28 0 Z`} fill="#FF4B3E" stroke={INK} strokeWidth={6} />
           <circle cx={TOP.x} cy={TOP.y - 40} r={5} fill="#fff" />
         </g>
-        {line > 0 && (
+        {rings.length > 0 && (
           <g>
+            <defs><clipPath id="earth-clip"><circle cx={EARTH.x} cy={EARTH.y} r={EARTH.R - 4} /></clipPath></defs>
+            <g clipPath="url(#earth-clip)">
+              {rings.map((r, i) => <circle key={i} cx={Q.x} cy={Q.y} r={r} fill="none" stroke="#fff" strokeWidth={9} opacity={0.85 * (1 - r / (EARTH.R * 2.1))} />)}
+            </g>
+          </g>
+        )}
+        {t >= T.quake && (
+          <g transform={`translate(${Q.x} ${Q.y}) rotate(-55) scale(${pop(t, T.quake, 0.25) * (1 - ramp(t, T.quake + 0.9, T.quake + 1.2, easeIn))})`}>
+            <path d={Array.from({length: 16}, (_, i) => { const a = (i / 16) * Math.PI * 2; const r = i % 2 ? 26 : 58; return `${i ? 'L' : 'M'}${(Math.cos(a) * r).toFixed(1)} ${(Math.sin(a) * r).toFixed(1)}`; }).join(' ') + 'Z'}
+              fill="#FFE07A" stroke={INK} strokeWidth={7} strokeLinejoin="round" />
+          </g>
+        )}
+        {t >= T.quake - 0.3 && (
+          <g transform={`translate(${SM.x} ${SM.y}) rotate(${(sa * 180) / Math.PI + 90}) scale(${1.8 * pop(t, T.quake - 0.3, 0.3)})`}>
+            <rect x={-46} y={-70} width={92} height={62} rx={10} fill="#5C9BD6" stroke={INK} strokeWidth={7} />
+            <rect x={-34} y={-60} width={68} height={40} rx={4} fill="#fff" stroke={INK} strokeWidth={5} />
+            <path d={Array.from({length: 18}, (_, i) => {
+              const x = -30 + i * 3.6; const on = t > arrive ? Math.exp(-Math.abs(i - 9) * 0.25) * Math.min(1, (t - arrive) * 3) : 0;
+              return `${i ? 'L' : 'M'}${x} ${(-40 + Math.sin(i * 2.3 + t * 40) * 15 * on).toFixed(1)}`; }).join(' ')}
+              fill="none" stroke="#FF4B3E" strokeWidth={4} strokeLinejoin="round" />
+          </g>
+        )}
+        {line > 0 && fadeInfo > 0.01 && (
+          <g opacity={fadeInfo}>
             <line x1={TOP.x} y1={TOP.y + 4} x2={TOP.x} y2={TOP.y + 4 + (EARTH.R - coreR - 10) * line} stroke="#fff" strokeWidth={8} strokeDasharray="22 16" strokeLinecap="round" />
             {line > 0.95 && <g transform={`translate(${TOP.x + 24} ${TOP.y + 230}) scale(${pop(t, T.line + 0.68, 0.25)})`}><Label x={0} y={0} text="6,371 km" size={58} /></g>}
           </g>

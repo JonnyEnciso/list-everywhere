@@ -1,38 +1,48 @@
 {
-  "source": "measured from take1.mp3 (pauses by RMS)",
+  "source": "measured from wp2.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 19.74,
+  "voiceEnd": 23.28,
   "voiceFile": "woodpecker/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.14,
-      "b": 4.44,
+      "a": 0.1,
+      "b": 4.18,
       "text": "So this woodpecker slams its face into a tree, over and over."
     },
     {
-      "a": 4.94,
-      "b": 6.0,
+      "a": 4.7,
+      "b": 5.68,
       "text": "Why no concussion?"
     },
     {
-      "a": 6.4,
-      "b": 9.3,
+      "a": 6.14,
+      "b": 8.6,
       "text": "People figured its skull works like a shock absorber."
     },
     {
-      "a": 9.6,
-      "b": 13.44,
+      "a": 8.86,
+      "b": 12.2,
       "text": "But slow-motion video shows the head stops hard, like a hammer."
     },
     {
-      "a": 13.84,
-      "b": 15.28,
+      "a": 12.72,
+      "b": 13.96,
       "text": "The real trick is size."
     },
     {
-      "a": 15.62,
-      "b": 19.74,
+      "a": 14.28,
+      "b": 17.96,
       "text": "Its brain is so small, the same hit makes way less pressure inside."
+    },
+    {
+      "a": 18.42,
+      "b": 20.26,
+      "text": "So it doesn't need a built-in cushion at all."
+    },
+    {
+      "a": 20.72,
+      "b": 23.28,
+      "text": "Turns out, having a bird brain is what keeps it safe."
     }
   ]
 }

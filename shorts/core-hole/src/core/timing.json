@@ -1,33 +1,43 @@
 {
-  "source": "measured from take1.mp3 (pauses by RMS)",
+  "source": "measured from core2.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 16.1,
+  "voiceEnd": 24.24,
   "voiceFile": "core/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.18,
-      "b": 2.76,
+      "a": 0.12,
+      "b": 2.94,
       "text": "So this guy wants to dig straight to the center of the Earth."
     },
     {
-      "a": 3.0,
-      "b": 4.72,
+      "a": 3.44,
+      "b": 5.3,
       "text": "Easy, right? Just keep digging."
     },
     {
-      "a": 5.14,
-      "b": 7.9,
+      "a": 5.68,
+      "b": 8.58,
       "text": "The deepest hole ever drilled is about twelve kilometers."
     },
     {
-      "a": 8.34,
-      "b": 12.68,
+      "a": 9.04,
+      "b": 13.54,
       "text": "Down there, the rock was around a hundred eighty degrees Celsius, and acted like plastic."
     },
     {
-      "a": 12.98,
-      "b": 16.1,
+      "a": 13.94,
+      "b": 17.34,
       "text": "So the drilling stopped, about a fifth of one percent of the way there."
+    },
+    {
+      "a": 17.72,
+      "b": 19.94,
+      "text": "Nobody's ever gotten anywhere close to the core."
+    },
+    {
+      "a": 20.34,
+      "b": 24.24,
+      "text": "Pretty much everything we know about it comes from earthquake waves passing through the planet."
     }
   ]
 }

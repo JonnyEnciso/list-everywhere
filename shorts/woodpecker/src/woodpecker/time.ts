@@ -7,7 +7,7 @@ const S = timing.sentences;
 export const at = (i: number, f: number) => S[i].a + (S[i].b - S[i].a) * f;
 export const VOICE_START = timing.voiceStart;
 export const VOICE_END = timing.voiceEnd;
-export const DURATION = VOICE_END + 0.9;
+export const DURATION = VOICE_END + 1.6; // a calm tail after the last word so the ending doesn't feel cut off
 
 // every beat as a constant (see beat sheet in README.md)
 export const T = {
@@ -25,7 +25,12 @@ export const T = {
   cut: S[5].a - 0.05, //            hard cut: woodpecker head vs. big round head
   jolt: at(5, 0.55), //             "the same HIT" both heads stop hard
   pressure: at(5, 0.82), //          "way less PRESSURE" big brain squeezed, small brain calm
-  loop: VOICE_END + 0.15, //        cut back to frame-0 shot: pecking again (loops)
+  outro: S[6].a - 0.05, //          cut back to the woodpecker on its tree
+  cushion: at(6, 0.55), //          "a built-in CUSHION" a pillow pops onto the beak
+  shake: at(6, 0.86), //            "at ALL" head shake, pillow thrown away
+  birdBrain: at(7, 0.36), //        "having a BIRD BRAIN" x-ray: the tiny brain smiles and pulses
+  safe: at(7, 0.92), //             "keeps it SAFE" lens closes
+  loop: at(7, 0.92) + 0.25, //      pecking again until the end, camera glides back to the frame-0 shot (loops)
 };
 
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));

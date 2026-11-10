@@ -31,6 +31,9 @@ t = t_(1.0); save('ding', sum(a * np.sin(2 * np.pi * fr * t) * np.exp(-t * 4) fo
 t = t_(0.55); save('whoosh', bp(noise(0.55), 300, 2200) * np.sin(np.pi * t / 0.55) ** 2)
 t = t_(2.2); save('sizzle', hp(noise(2.2), 3000) * (0.5 + 0.5 * np.abs(np.sin(2 * np.pi * 3.1 * t))) * np.minimum(1, t * 4) * np.minimum(1, (2.2 - t) * 2))
 t = t_(0.5); f = 160 + 120 * np.sin(np.pi * t / 0.5); save('squish', lp(noise(0.5), 1100) * np.sin(np.pi * t / 0.5) + 0.7 * np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * t / 0.5))
+# earthquake rumble (low noise swell) and seismograph needle scratch
+t = t_(1.6); save('rumble', lp(noise(1.6), 160) * np.sin(np.pi * t / 1.6) ** 0.6 * (0.7 + 0.3 * np.sin(2 * np.pi * 7 * t)) + 0.3 * np.sin(2 * np.pi * 42 * t) * np.sin(np.pi * t / 1.6))
+t = t_(0.9); save('scratch', bp(noise(0.9), 2500, 7000) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 14 * t))) * np.exp(-t * 3))
 # drill: motor hum + grinding, runs from the drill beat to the stop beat, then winds down
 d = json.load(open(os.path.join(ROOT, 'src', 'core', 'timing.json')))
 S = d['sentences']

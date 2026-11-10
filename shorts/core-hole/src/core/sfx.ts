@@ -24,4 +24,8 @@ export const CUES: Cue[] = [
   {f: 'whoosh', at: T.earth - 0.1, db: -22},
   {f: 'pop', at: T.lens, db: -22},
   {f: 'swish', at: T.line, db: -27},
+  {f: 'pop', at: T.nobody + 0.25, db: -26},
+  {f: 'boing', at: T.nobody + 0.35, db: -28},
+  {f: 'rumble', at: T.quake, db: -16},
+  {f: 'scratch', at: T.quake + (2 * 440) / 700, db: -24},
 ];

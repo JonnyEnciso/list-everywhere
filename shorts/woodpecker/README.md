@@ -3,31 +3,34 @@
 Vertical 2D cut-out cartoon Short (1080x1920 comp, 60 fps, rendered 2160x3840) made with the
 `cutout-cartoon-shorts` skill (`.claude/skills/cutout-cartoon-shorts/SKILL.md`).
 
-## Voice-over (53 words, ~19-20 s)
+## Voice-over (73 words, 23.3 s; video 24.9 s)
 
 > So this woodpecker slams its face into a tree, over and over. Why no concussion? People figured its skull works
 > like a shock absorber. But slow-motion video shows the head stops hard, like a hammer. The real trick is size.
-> Its brain is so small, the same hit makes way less pressure inside.
+> Its brain is so small, the same hit makes way less pressure inside. So it doesn't need a built-in cushion at all.
+> Turns out, having a bird brain is what keeps it safe.
 
 Source: Van Wassenbergh et al. (2022), "Woodpeckers minimize cranial absorption of shocks", *Current Biology*,
 doi:10.1016/j.cub.2022.05.052 (high-speed video of three species: the head works as a stiff hammer, not a shock
 absorber; pressure simulations put the small brain below primate concussion thresholds).
 
 Voice: ElevenLabs engine through Higgsfield `text2speech_v2` (variant `elevenlabs`, preset voice "Mark"),
-Higgsfield job `0de174ac-b3b9-4878-bd00-a4cacb881a23` (0.9 credits). An earlier 70-word take (Seed Audio,
+Higgsfield job `9171de8e-8a00-43ab-ad96-b573ba428aef` (with the ending; the earlier 6-line take was `0de174ac-...`). An earlier 70-word take (Seed Audio,
 "John", job `132eada2-2e84-405e-9ed7-de419c6d042c`) belongs to the longer first draft and is not used.
 
 ## Beat sheet (times measured from the voice take by `scripts/retime.py`)
 
 | time | words | on screen | sound |
 |---|---|---|---|
-| 0.1 - 4.4 | "So this woodpecker slams its face into a tree, over and over." | frame 0 = premise: woodpecker on a trunk, rapid pecks, wood chips, peck hole grows | knocks, small shake per hit |
-| 4.9 - 6.0 | "Why no concussion?" | camera pushes in; on "concussion" dizzy stars pop around the head; a calm blink pops them away | pops |
-| 6.4 - 9.3 | "People figured its skull works like a shock absorber." | on "skull" an x-ray lens opens on the head; then a coil spring between beak and brain boings on every peck | whoosh, knock + boing |
-| 9.6 - 13.4 | "But slow-motion video shows the head stops hard, like a hammer." | REC viewfinder; on "shows the head" the spring pops out of the head; one slow-motion strike while a hammer swings at a nail on the other side of the trunk; both stop hard together on "hammer" | beep, boing, big thud + clang |
-| 13.8 - 15.3 | "The real trick is size." | camera dives into the head; x-ray shows the tiny calm brain, which pulses on "size" | whoosh, pop |
-| 15.6 - 19.7 | "Its brain is so small, the same hit makes way less pressure inside." | hard cut: woodpecker head (tiny brain) beside a big round cartoon head (big brain); on "hit" both stop hard; on "pressure" red rings squeeze the big worried brain (sweat drop) while the small one smiles | thud, squeeze |
-| 19.9 - 20.6 | | cut back to the frame-0 shot, pecking again (loops) | knocks |
+| 0.1 - 4.2 | "So this woodpecker slams its face into a tree, over and over." | frame 0 = premise: woodpecker on a trunk, rapid pecks, wood chips, peck hole grows | knocks, small shake per hit |
+| 4.7 - 5.7 | "Why no concussion?" | camera pushes in; on "concussion" dizzy stars pop around the head; a calm blink pops them away | pops |
+| 6.1 - 8.6 | "People figured its skull works like a shock absorber." | on "skull" an x-ray lens opens on the head; a coil spring between beak and brain boings on every peck | whoosh, knock + boing |
+| 8.9 - 12.2 | "But slow-motion video shows the head stops hard, like a hammer." | REC viewfinder; on "shows the head" the spring pops out; one slow-motion strike while a hammer swings at a nail on the other side of the trunk; both stop hard together on "hammer" | beep, boing, big thud + clang |
+| 12.7 - 14.0 | "The real trick is size." | camera dives into the head; x-ray shows the tiny calm brain, which pulses on "size" | whoosh, pop |
+| 14.3 - 18.0 | "Its brain is so small, the same hit makes way less pressure inside." | hard cut: woodpecker head (tiny brain) beside a big round cartoon head (big brain); on "hit" both stop hard; on "pressure" red rings squeeze the big worried brain while the small one smiles | thud, squeeze |
+| 18.4 - 20.3 | "So it doesn't need a built-in cushion at all." | cut back to the woodpecker on its tree; on "cushion" a pillow pops onto its beak; on "at all" a head shake and the pillow is thrown away (projectile) | pop, whoosh |
+| 20.7 - 23.3 | "Turns out, having a bird brain is what keeps it safe." | on "bird brain" the x-ray opens on the smiling, pulsing little brain; on "safe" it closes and the pecking starts again | whoosh, pop, knocks |
+| 23.3 - end | | 1.6 s tail: pecking while the camera glides back to the frame-0 shot (seamless loop) | knocks |
 
 ## Differences from the skill, and why
 

@@ -3,7 +3,7 @@ import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame} from 'remoti
 import timing from './timing.json';
 import {FPS, DURATION, T, at, clamp, lerp, ramp, pop, wobble, easeOut, easeIn, easeInOut, rnd} from './time';
 import {HITS, headAngle, sinceHit} from './peck';
-import {Bird, Brain, Hammer, INK, RoundHead, Star, W, HEAD, BEAK_TIP} from './parts';
+import {Bird, Brain, Hammer, INK, RoundHead, Star, W, HEAD, BEAK_TIP, Pillow} from './parts';
 import {CUES} from './sfx';
 
 export {DURATION, FPS};
@@ -29,8 +29,9 @@ const MOVES: {t0: number; t1: number; to: Cam; cut?: boolean}[] = [
   {t0: T.recOff, t1: T.recOff + 0.55, to: {x: 540, y: 905, z: 260}},
   {t0: T.dolly, t1: T.size - 0.08, to: {x: HEAD_W.x - 28, y: HEAD_W.y - 6, z: 730}},
   {t0: T.cut, t1: T.cut, to: {x: CMP.cx, y: 960, z: 0}, cut: true},
-  {t0: T.cut + 0.2, t1: T.loop - 0.1, to: {x: CMP.cx, y: 950, z: 60}},
-  {t0: T.loop, t1: T.loop, to: START, cut: true},
+  {t0: T.cut + 0.2, t1: T.outro - 0.1, to: {x: CMP.cx, y: 950, z: 60}},
+  {t0: T.outro, t1: T.outro, to: {x: HEAD_W.x + 30, y: HEAD_W.y + 60, z: 330}, cut: true},
+  {t0: T.safe - 0.2, t1: DURATION - 0.35, to: START},
 ];
 const kOf = (z: number) => 1000 / (1000 - z);
 const camAt = (t: number): Cam => {
@@ -236,6 +237,16 @@ const Viewfinder: React.FC<{t: number}> = ({t}) => {
   );
 };
 
+/** the pillow thrown off the beak: a real projectile with gravity and spin */
+const FlyingPillow: React.FC<{t: number}> = ({t}) => {
+  const s = t - (T.shake + 0.25);
+  if (s < 0 || s > 1.4) return null;
+  const x = HIT_PT.x - 30 - 520 * s, y = HIT_PT.y - 760 * s + 0.5 * 2200 * s * s;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${-420 * s}) scale(${BIRD.s})`}><Pillow w={78} h={92} /></g>
+  );
+};
+
 // ------------------------------------------------------------------------------------------------ comparison shot
 const Comparison: React.FC<{t: number}> = ({t}) => {
   // both heads glide right and then stop hard on the same frame (the same jolt)
@@ -281,23 +292,25 @@ export const Woodpecker: React.FC = () => {
   const base = camAt(t);
   const sh = shakeAt(t);
   const cam = {...base, x: base.x - sh.x / kOf(base.z), y: base.y - sh.y / kOf(base.z)};
-  const comparison = t >= T.cut && t < T.loop;
+  const comparison = t >= T.cut && t < T.outro;
 
   // bird state
   const springHit = sinceHit(t, ['spring']);
   let angle = headAngle(t);
   if (t < T.slow && springHit < 1) angle += 7 * wobble(t, t - springHit, 4.5, 5); // the "shock absorber" bounce
-  const xray = t < T.xray ? 0 : t < T.recOff ? pop(t, T.xray, 0.35) * 1
+  const xray = t >= T.outro ? pop(t, T.birdBrain, 0.35) * (1 - ramp(t, T.safe, T.safe + 0.25, easeIn)) : t < T.xray ? 0 : t < T.recOff ? pop(t, T.xray, 0.35) * 1
     : t < T.dolly ? 1 - ramp(t, T.recOff, T.recOff + 0.25, easeIn) : ramp(t, T.dolly + 0.25, T.dolly + 0.65, easeOut);
-  const blinkAt = [T.starsOff, T.recOff + 0.5, T.size + 0.6, 2.2];
+  const blinkAt = [T.starsOff, T.recOff + 0.5, T.size + 0.6, 2.2, T.outro + 0.35];
   let blink = 0;
   for (const b of blinkAt) { const s = t - b; if (s >= 0 && s < 0.16) blink = Math.max(blink, 1 - Math.abs(s - 0.08) / 0.08); }
   const brow: 'focus' | 'calm' | 'annoyed' =
     t >= T.slowHit + 0.15 && t < T.recOff ? 'annoyed' : (t >= T.starsOff - 0.1 && t < T.springPecks) || (t >= T.dolly + 0.4 && t < T.loop) ? 'calm' : 'focus';
+  if (t >= T.shake - 0.3 && t < T.shake + 0.6) angle += 9 * Math.sin((t - T.shake + 0.3) * 2 * Math.PI * 4) * (1 - ramp(t, T.shake + 0.2, T.shake + 0.6)); // "no thanks" head shake
+  const pillow = t >= T.cushion && t < T.shake + 0.25 ? pop(t, T.cushion, 0.3) : 0;
   const lookX = t >= at(1, 0.2) && t < T.springPecks ? 0 : 0.3;
   const springLen = 1 - (springHit < 1 && t < T.slow ? 0.55 * Math.exp(-springHit * 9) : 0);
   const holes = HITS.filter((h) => h.t <= t).length;
-  const brainPulse = t >= T.size ? Math.max(0, wobble(t, T.size, 2.5, 4)) : 0;
+  const brainPulse = t >= T.birdBrain ? Math.max(0, wobble(t, T.birdBrain, 2.5, 3)) : t >= T.size ? Math.max(0, wobble(t, T.size, 2.5, 4)) : 0;
 
   return (
     <AbsoluteFill style={{background: 'linear-gradient(#8ED2FF 0%, #C8ECFF 62%, #E6F7FF 100%)'}}>
@@ -312,11 +325,12 @@ export const Woodpecker: React.FC = () => {
             <g transform={`translate(${BIRD.x} ${BIRD.y}) scale(${BIRD.s})`}>
               <Bird angle={angle} lookX={lookX} blink={blink} brow={brow} xray={xray}
                 xrayContent={t < T.recOff + 0.3 ? 'spring' : 'brain'} springLen={springLen}
-                springOut={t >= T.slow ? t - T.slow : -1} brainPulse={brainPulse} />
+                springOut={t >= T.slow ? t - T.slow : -1} brainPulse={brainPulse} pillow={pillow} />
             </g>
             <DizzyStars t={t} front />
             <HammerRig t={t} />
             <Chips t={t} />
+            <FlyingPillow t={t} />
             <ImpactLines x={HIT_PT.x - 10} y={HIT_PT.y} t={t} t0={T.slowHit} dir={-1} scale={1.3} />
             <ImpactLines x={NAIL.x + 50} y={NAIL.y} t={t} t0={T.slowHit} dir={1} scale={1.3} />
           </g>

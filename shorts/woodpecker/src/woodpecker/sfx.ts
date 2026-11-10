@@ -20,4 +20,8 @@ export const CUES: Cue[] = [
   {f: 'pop', at: T.size, db: -25},
   {f: 'thud', at: T.jolt, db: -15},
   {f: 'squeeze', at: T.pressure, db: -25},
+  {f: 'pop', at: T.cushion, db: -22},
+  {f: 'whoosh', at: T.shake + 0.25, db: -24},
+  {f: 'whoosh', at: T.birdBrain - 0.15, db: -28},
+  {f: 'pop', at: T.birdBrain + 0.05, db: -25},
 ];

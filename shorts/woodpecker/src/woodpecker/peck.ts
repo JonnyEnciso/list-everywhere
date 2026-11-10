@@ -31,7 +31,7 @@ for (let k = Math.ceil(loopPhase(T.loop)); k <= Math.floor(loopPhase(DURATION));
   HITS.push({t: (k - PH0) / F1 + DURATION, kind: 'wood'});
 
 export const headAngle = (t: number): number => {
-  if (t >= T.loop) return cycle(frac(loopPhase(t)));
+  if (t >= T.loop) return lerp(REST, cycle(frac(loopPhase(t))), ramp(t, T.loop, T.loop + 0.25));
   if (t <= lastRapidHit) return cycle(frac(rapidPhase(t)));
   if (t < T.springPecks) return lerp(0, REST, ramp(t, lastRapidHit, lastRapidHit + 0.3, easeOut));
   if (t <= lastSpringHit) {

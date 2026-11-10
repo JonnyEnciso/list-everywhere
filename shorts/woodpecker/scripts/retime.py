@@ -72,7 +72,7 @@ def main(src):
              voiceEnd=round(VOICE_AT + end, 3), voiceFile=f'woodpecker/vo/take1{ext}')
     json.dump(d, open(TIMING, 'w'), indent=2)
     for s in d['sentences']: print(f"{s['a']:6.2f} - {s['b']:6.2f}  {s['text']}")
-    print(f"voice ends {d['voiceEnd']:.2f} s -> video {d['voiceEnd'] + 0.9:.2f} s")
+    print(f"voice ends {d['voiceEnd']:.2f} s -> video {d['voiceEnd'] + 1.6:.2f} s")
 
 
 if __name__ == '__main__':
