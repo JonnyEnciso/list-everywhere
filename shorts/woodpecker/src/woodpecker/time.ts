@@ -12,22 +12,19 @@ export const DURATION = VOICE_END + 0.9;
 // every beat as a constant (see beat sheet in README.md)
 export const T = {
   rapidEnd: S[1].a + 0.3, //        rapid pecking stops as the question starts
-  stars: at(1, 0.62), //            "...a CONcussion?" dizzy stars pop on
-  starsOff: S[2].a + 0.15, //       calm blink, stars pop away
-  xray: at(2, 0.2), //              "assumed its SKULL" x-ray lens opens on the head
-  springPecks: at(2, 0.42), //      "like a shock ABSORBER" spring pecks begin
-  rec: S[3].a + 0.05, //            "But when scientists FILMED" camera viewfinder
-  slow: at(3, 0.4), //              "in SLOW motion" spring pops out, slow-mo strike
-  slowHit: at(3, 0.9), //           "like a HAMMER" head + hammer hit together
+  stars: at(1, 0.55), //            "Why no conCUSSion?" dizzy stars pop on
+  starsOff: S[2].a + 0.1, //        calm blink, stars pop away
+  xray: at(2, 0.3), //              "its SKULL" x-ray lens opens on the head
+  springPecks: at(2, 0.55), //      "like a SHOCK absorber" spring pecks begin
+  rec: S[3].a + 0.05, //            "But slow-motion VIDEO" camera viewfinder
+  slow: at(3, 0.2), //              "SLOW-motion" spring pops out, slow-mo strike starts
+  slowHit: at(3, 0.92), //          "like a HAMMER" head + hammer hit together
   recOff: S[4].a - 0.05,
-  pillow: S[4].a + 0.08, //         "CUSHIONING" pillow pops onto the beak
-  pillowHit: at(4, 0.86), //        "each PECK" soft useless bump
-  pillowOff: S[5].a + 0.05, //      pillow thrown off
-  dolly: S[5].a + 0.05, //          "The real protection" camera dives into the head
-  size: at(5, 0.8), //              "is SIZE" tiny brain pulses
-  cut: S[6].a - 0.05, //            hard cut: woodpecker head vs. big round head
-  jolt: at(6, 0.47), //             "the same JOLT" both heads stop hard
-  pressure: at(6, 0.66), //         "far less PRESSURE" big brain squeezed, small brain calm
+  dolly: S[4].a + 0.05, //          "The real trick" camera dives into the head
+  size: at(4, 0.85), //             "is SIZE" tiny brain pulses
+  cut: S[5].a - 0.05, //            hard cut: woodpecker head vs. big round head
+  jolt: at(5, 0.55), //             "the same HIT" both heads stop hard
+  pressure: at(5, 0.8), //          "way less PRESSURE" big brain squeezed, small brain calm
   loop: VOICE_END + 0.15, //        cut back to frame-0 shot: pecking again (loops)
 };
 

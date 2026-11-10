@@ -132,7 +132,7 @@ const Leaves: React.FC = () => (
 // ------------------------------------------------------------------------------------------------ effects
 const Chips: React.FC<{t: number}> = ({t}) => (
   <g strokeLinejoin="round">
-    {HITS.filter((h) => h.kind !== 'pillow' && t >= h.t && t < h.t + 1.6).flatMap((h, hi) => {
+    {HITS.filter((h) => t >= h.t && t < h.t + 1.6).flatMap((h, hi) => {
       const n = h.kind === 'slow' ? 7 : 3;
       const slowmo = h.kind === 'slow' ? 0.45 : 1;
       return Array.from({length: n}, (_, j) => {
@@ -214,21 +214,6 @@ const Nail: React.FC<{t: number}> = ({t}) => {
   );
 };
 
-const PillowPuff: React.FC<{t: number}> = ({t}) => {
-  const s = t - T.pillowHit;
-  if (s < 0 || s > 0.7) return null;
-  return (
-    <g>
-      {[0, 1, 2, 3].map((i) => {
-        const a = (-150 + i * 95 + rnd(i) * 30) * (Math.PI / 180);
-        const d = 30 + 90 * easeOut(s / 0.7);
-        const r = 13 * (1 - s / 0.7) + 2;
-        return <circle key={i} cx={HIT_PT.x - 30 + Math.cos(a) * d} cy={HIT_PT.y + Math.sin(a) * d} r={r} fill="#fff" stroke={INK} strokeWidth={4} />;
-      })}
-    </g>
-  );
-};
-
 const Viewfinder: React.FC<{t: number}> = ({t}) => {
   const on = pop(t, T.rec, 0.25) * (1 - ramp(t, T.recOff - 0.1, T.recOff + 0.1, easeIn));
   if (on <= 0.001) return null;
@@ -304,16 +289,14 @@ export const Woodpecker: React.FC = () => {
   if (t < T.slow && springHit < 1) angle += 7 * wobble(t, t - springHit, 4.5, 5); // the "shock absorber" bounce
   const xray = t < T.xray ? 0 : t < T.recOff ? pop(t, T.xray, 0.35) * 1
     : t < T.dolly ? 1 - ramp(t, T.recOff, T.recOff + 0.25, easeIn) : ramp(t, T.dolly + 0.25, T.dolly + 0.65, easeOut);
-  const blinkAt = [T.starsOff, T.pillow - 0.4, T.size + 0.6, 2.2];
+  const blinkAt = [T.starsOff, T.recOff + 0.5, T.size + 0.6, 2.2];
   let blink = 0;
   for (const b of blinkAt) { const s = t - b; if (s >= 0 && s < 0.16) blink = Math.max(blink, 1 - Math.abs(s - 0.08) / 0.08); }
   const brow: 'focus' | 'calm' | 'annoyed' =
-    t >= T.pillowHit + 0.1 && t < T.dolly + 0.4 ? 'annoyed' : (t >= T.starsOff - 0.1 && t < T.springPecks) || (t >= T.dolly + 0.4 && t < T.loop) ? 'calm' : 'focus';
+    t >= T.slowHit + 0.15 && t < T.recOff ? 'annoyed' : (t >= T.starsOff - 0.1 && t < T.springPecks) || (t >= T.dolly + 0.4 && t < T.loop) ? 'calm' : 'focus';
   const lookX = t >= at(1, 0.2) && t < T.springPecks ? 0 : 0.3;
-  const pillow = t < T.pillow ? 0 : pop(t, T.pillow, 0.3) * (1 - ramp(t, T.pillowOff, T.pillowOff + 0.18, easeIn));
-  const pillowSquash = t >= T.pillowHit ? Math.max(0, Math.exp(-(t - T.pillowHit) * 5) * (0.7 + 0.3 * Math.cos((t - T.pillowHit) * 30))) : 0;
   const springLen = 1 - (springHit < 1 && t < T.slow ? 0.55 * Math.exp(-springHit * 9) : 0);
-  const holes = HITS.filter((h) => h.t <= t && h.kind !== 'pillow').length;
+  const holes = HITS.filter((h) => h.t <= t).length;
   const brainPulse = t >= T.size ? Math.max(0, wobble(t, T.size, 2.5, 4)) : 0;
 
   return (
@@ -329,12 +312,11 @@ export const Woodpecker: React.FC = () => {
             <g transform={`translate(${BIRD.x} ${BIRD.y}) scale(${BIRD.s})`}>
               <Bird angle={angle} lookX={lookX} blink={blink} brow={brow} xray={xray}
                 xrayContent={t < T.recOff + 0.3 ? 'spring' : 'brain'} springLen={springLen}
-                springOut={t >= T.slow ? t - T.slow : -1} pillow={pillow} pillowSquash={pillowSquash} brainPulse={brainPulse} />
+                springOut={t >= T.slow ? t - T.slow : -1} brainPulse={brainPulse} />
             </g>
             <DizzyStars t={t} front />
             <HammerRig t={t} />
             <Chips t={t} />
-            <PillowPuff t={t} />
             <ImpactLines x={HIT_PT.x - 10} y={HIT_PT.y} t={t} t0={T.slowHit} dir={-1} scale={1.3} />
             <ImpactLines x={NAIL.x + 50} y={NAIL.y} t={t} t0={T.slowHit} dir={1} scale={1.3} />
           </g>

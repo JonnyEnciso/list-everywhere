@@ -1,4 +1,4 @@
-import {T, DURATION, ramp, easeIn, easeOut, lerp, wobble, clamp} from './time';
+import {T, DURATION, ramp, easeIn, easeOut, lerp, clamp} from './time';
 
 export const BACK = -38; // head pulled back (deg, about the neck pivot)
 export const REST = -12; // relaxed head
@@ -21,13 +21,12 @@ const springPhase = (t: number) => (t - T.springPecks) * F2 + 0.5;
 const lastSpringHit = (Math.floor(springPhase(T.slow - 0.8)) - 0.5) / F2 + T.springPecks;
 const loopPhase = (t: number) => (t - DURATION) * F1 + PH0; // same phase as frame 0 at the end -> seamless loop
 
-export type Hit = {t: number; kind: 'wood' | 'spring' | 'slow' | 'pillow'};
+export type Hit = {t: number; kind: 'wood' | 'spring' | 'slow'};
 export const HITS: Hit[] = [];
 for (let k = Math.ceil(PH0); k / F1 - PH0 / F1 <= lastRapidHit + 1e-6; k++) HITS.push({t: k / F1 - PH0 / F1, kind: 'wood'});
 for (let k = 1; (k - 0.5) / F2 + T.springPecks <= lastSpringHit + 1e-6; k++)
   HITS.push({t: (k - 0.5) / F2 + T.springPecks, kind: 'spring'});
 HITS.push({t: T.slowHit, kind: 'slow'});
-HITS.push({t: T.pillowHit, kind: 'pillow'});
 for (let k = Math.ceil(loopPhase(T.loop)); k <= Math.floor(loopPhase(DURATION)); k++)
   HITS.push({t: (k - PH0) / F1 + DURATION, kind: 'wood'});
 
@@ -42,12 +41,7 @@ export const headAngle = (t: number): number => {
   if (t < T.slow) return lerp(0, BACK, ramp(t, lastSpringHit, lastSpringHit + 0.4, easeOut));
   if (t < T.slowHit) return BACK * (1 - Math.pow(clamp((t - T.slow) / (T.slowHit - T.slow)), 1.4)); // slow motion, even speed
   if (t < T.recOff) return 0; // stopped hard: no bounce, no wobble
-  if (t < T.pillowHit - 0.12) {
-    const back = lerp(0, REST, ramp(t, T.recOff, T.recOff + 0.3));
-    return lerp(back, BACK, ramp(t, T.pillowHit - 0.75, T.pillowHit - 0.3));
-  }
-  if (t < T.pillowHit) return BACK * (1 - easeIn((t - (T.pillowHit - 0.12)) / 0.12));
-  return lerp(0, REST, ramp(t, T.pillowHit, T.pillowHit + 0.45, easeOut)) - 5 * wobble(t, T.pillowHit, 3, 5);
+  return lerp(0, REST, ramp(t, T.recOff, T.recOff + 0.35));
 };
 
 /** time since the latest hit of the given kinds (Infinity if none yet) */
