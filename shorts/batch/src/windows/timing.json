@@ -1,0 +1,43 @@
+{
+  "source": "measured from windows.mp3 (pauses by RMS)",
+  "voiceStart": 0.1,
+  "voiceEnd": 26.42,
+  "voiceFile": "windows/vo/take1.mp3",
+  "sentences": [
+    {
+      "a": 0.26,
+      "b": 3.28,
+      "text": "So why are airplane windows round, and not square?"
+    },
+    {
+      "a": 3.68,
+      "b": 9.48,
+      "text": "In nineteen fifty-four, two Comets, the world's first jet airliners, broke apart in midair."
+    },
+    {
+      "a": 9.88,
+      "b": 13.24,
+      "text": "Every flight, the cabin gets pumped full of air, then let down again."
+    },
+    {
+      "a": 13.7,
+      "b": 16.34,
+      "text": "That flexes the metal, over and over."
+    },
+    {
+      "a": 16.74,
+      "b": 20.78,
+      "text": "At sharp corners, the stress bunches up, and tiny cracks start to grow."
+    },
+    {
+      "a": 21.14,
+      "b": 23.26,
+      "text": "Round corners spread the stress out evenly."
+    },
+    {
+      "a": 23.46,
+      "b": 26.42,
+      "text": "So pretty much every airliner since has rounded windows."
+    }
+  ]
+}

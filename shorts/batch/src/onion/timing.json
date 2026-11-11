@@ -1,0 +1,43 @@
+{
+  "source": "measured from onion.mp3 (pauses by RMS)",
+  "voiceStart": 0.1,
+  "voiceEnd": 22.92,
+  "voiceFile": "onion/vo/take1.mp3",
+  "sentences": [
+    {
+      "a": 0.16,
+      "b": 2.32,
+      "text": "So why does cutting an onion make you cry?"
+    },
+    {
+      "a": 2.78,
+      "b": 4.22,
+      "text": "A whole onion is harmless."
+    },
+    {
+      "a": 4.52,
+      "b": 9.04,
+      "text": "But the knife breaks open its cells, and chemicals that were kept apart suddenly mix."
+    },
+    {
+      "a": 9.46,
+      "b": 13.38,
+      "text": "An enzyme turns them into a gas that drifts right up into your eyes."
+    },
+    {
+      "a": 13.84,
+      "b": 17.3,
+      "text": "Your eyes feel it as an irritant, so they flush it out with tears."
+    },
+    {
+      "a": 17.68,
+      "b": 20.02,
+      "text": "Basically, the onion is defending itself."
+    },
+    {
+      "a": 20.44,
+      "b": 22.92,
+      "text": "Scientists have even made onions that barely do it."
+    }
+  ]
+}

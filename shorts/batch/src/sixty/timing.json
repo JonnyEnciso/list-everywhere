@@ -1,0 +1,43 @@
+{
+  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "voiceStart": 0.1,
+  "voiceEnd": 25.85,
+  "voiceFile": null,
+  "sentences": [
+    {
+      "a": 0.15,
+      "b": 3.45,
+      "text": "So why does an hour have sixty minutes, and not a hundred?"
+    },
+    {
+      "a": 3.85,
+      "b": 6.74,
+      "text": "Blame people who lived over four thousand years ago."
+    },
+    {
+      "a": 7.14,
+      "b": 10.02,
+      "text": "The Sumerians and Babylonians counted in sixties."
+    },
+    {
+      "a": 10.42,
+      "b": 13.72,
+      "text": "Sixty splits evenly into halves, thirds, quarters, fifths, and tenths."
+    },
+    {
+      "a": 14.12,
+      "b": 16.39,
+      "text": "A hundred can't even be split into thirds."
+    },
+    {
+      "a": 16.79,
+      "b": 20.09,
+      "text": "Later, astronomers used those sixties to divide up time."
+    },
+    {
+      "a": 20.49,
+      "b": 25.85,
+      "text": "Nobody knows for sure why they picked sixty, but we still count that way every time we check a clock."
+    }
+  ]
+}

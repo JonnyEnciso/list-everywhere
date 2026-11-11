@@ -1,0 +1,43 @@
+{
+  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "voiceStart": 0.1,
+  "voiceEnd": 23.58,
+  "voiceFile": null,
+  "sentences": [
+    {
+      "a": 0.15,
+      "b": 3.66,
+      "text": "So this is your stomach, full of acid strong enough to break down meat."
+    },
+    {
+      "a": 4.06,
+      "b": 5.5,
+      "text": "Why doesn't it digest itself?"
+    },
+    {
+      "a": 5.9,
+      "b": 7.75,
+      "text": "Basically, it wears a raincoat."
+    },
+    {
+      "a": 8.15,
+      "b": 14.34,
+      "text": "The wall is coated in thick mucus, and the cells underneath pump out bicarbonate, the same stuff that's in baking soda."
+    },
+    {
+      "a": 14.74,
+      "b": 17.63,
+      "text": "Any acid that sneaks through gets neutralized right there."
+    },
+    {
+      "a": 18.03,
+      "b": 20.71,
+      "text": "And worn-out lining cells get replaced all the time."
+    },
+    {
+      "a": 21.11,
+      "b": 23.58,
+      "text": "When that shield breaks down, that's how you get an ulcer."
+    }
+  ]
+}

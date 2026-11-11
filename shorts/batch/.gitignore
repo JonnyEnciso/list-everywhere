@@ -1,0 +1,5 @@
+node_modules/
+.bundle/
+out/
+images/qa/still-*.png
+.bundle-stills/
