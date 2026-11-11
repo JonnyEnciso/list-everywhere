@@ -1,42 +1,42 @@
 {
-  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "source": "measured from moon.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 21.31,
-  "voiceFile": null,
+  "voiceEnd": 23.7,
+  "voiceFile": "moon/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.15,
-      "b": 4.07,
+      "a": 0.14,
+      "b": 4.4,
       "text": "So these are astronaut boot prints on the Moon, from over fifty years ago."
     },
     {
-      "a": 4.47,
-      "b": 5.5,
+      "a": 4.72,
+      "b": 5.78,
       "text": "Why are they still there?"
     },
     {
-      "a": 5.9,
-      "b": 7.96,
+      "a": 6.18,
+      "b": 9.0,
       "text": "On Earth, wind and rain would wipe them out fast."
     },
     {
-      "a": 8.36,
-      "b": 10.83,
+      "a": 9.24,
+      "b": 12.08,
       "text": "But the Moon has no air, so no wind and no rain."
     },
     {
-      "a": 11.23,
-      "b": 14.95,
+      "a": 12.44,
+      "b": 16.28,
       "text": "The only thing wearing them down is a slow drizzle of tiny space rocks."
     },
     {
-      "a": 15.35,
-      "b": 18.85,
+      "a": 16.6,
+      "b": 20.84,
       "text": "Scientists think the prints could last tens of thousands of years, maybe much longer."
     },
     {
-      "a": 19.25,
-      "b": 21.31,
+      "a": 21.18,
+      "b": 23.7,
       "text": "So for now, they're just sitting there, waiting."
     }
   ]

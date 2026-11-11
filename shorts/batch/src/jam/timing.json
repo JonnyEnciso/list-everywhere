@@ -1,42 +1,42 @@
 {
-  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "source": "measured from jam.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 25.64,
-  "voiceFile": null,
+  "voiceEnd": 26.92,
+  "voiceFile": "jam/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.15,
-      "b": 2.42,
+      "a": 0.18,
+      "b": 2.4,
       "text": "Why do traffic jams appear out of nowhere?"
     },
     {
-      "a": 2.82,
-      "b": 7.35,
+      "a": 2.86,
+      "b": 7.32,
       "text": "In two thousand eight, researchers in Japan put twenty-two cars on a circular track."
     },
     {
-      "a": 7.75,
-      "b": 11.67,
+      "a": 7.56,
+      "b": 11.98,
       "text": "No lights, no crashes. Just drive at a steady thirty kilometers an hour."
     },
     {
-      "a": 12.07,
-      "b": 13.72,
+      "a": 12.44,
+      "b": 13.78,
       "text": "A jam showed up anyway."
     },
     {
-      "a": 14.12,
-      "b": 18.24,
+      "a": 14.2,
+      "b": 18.34,
       "text": "One driver eased off a little, the next braked a bit harder, and so on."
     },
     {
-      "a": 18.64,
-      "b": 21.94,
+      "a": 18.8,
+      "b": 22.68,
       "text": "The wave grew into a full stop that crept backward around the track."
     },
     {
-      "a": 22.34,
-      "b": 25.64,
+      "a": 23.02,
+      "b": 26.92,
       "text": "So when cars are packed too close, traffic can jam all by itself."
     }
   ]

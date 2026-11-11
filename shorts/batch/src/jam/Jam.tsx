@@ -19,11 +19,11 @@ const FONT = 'Inter Display, Inter, sans-serif';
 const CAPTIONS = [
   'Why do traffic *jams* appear out of *nowhere?*',
   'In 2008, researchers in Japan put *22 cars* on a *circular* track.',
-  'No lights, no crashes. Just a steady *30 km/h.*',
+  'No lights, no crashes. Just drive at a steady *30 km/h.*',
   'A jam showed up *anyway.*',
   'One driver eased off a little, the next braked a bit *harder*, and so on.',
   'The wave grew into a full *stop* that crept *backward* around the track.',
-  'When cars are packed too close, traffic can jam *all by itself.*',
+  'So when cars are packed too close, traffic can jam *all by itself.*',
 ];
 
 const T = {

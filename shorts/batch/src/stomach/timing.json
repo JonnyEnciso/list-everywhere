@@ -1,42 +1,42 @@
 {
-  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "source": "measured from stomach.mp3 (pauses by RMS)",
   "voiceStart": 0.1,
-  "voiceEnd": 23.58,
-  "voiceFile": null,
+  "voiceEnd": 25.04,
+  "voiceFile": "stomach/vo/take1.mp3",
   "sentences": [
     {
-      "a": 0.15,
-      "b": 3.66,
+      "a": 0.12,
+      "b": 4.22,
       "text": "So this is your stomach, full of acid strong enough to break down meat."
     },
     {
-      "a": 4.06,
-      "b": 5.5,
+      "a": 4.74,
+      "b": 6.34,
       "text": "Why doesn't it digest itself?"
     },
     {
-      "a": 5.9,
-      "b": 7.75,
+      "a": 6.88,
+      "b": 9.0,
       "text": "Basically, it wears a raincoat."
     },
     {
-      "a": 8.15,
-      "b": 14.34,
+      "a": 9.36,
+      "b": 15.64,
       "text": "The wall is coated in thick mucus, and the cells underneath pump out bicarbonate, the same stuff that's in baking soda."
     },
     {
-      "a": 14.74,
-      "b": 17.63,
+      "a": 16.06,
+      "b": 18.98,
       "text": "Any acid that sneaks through gets neutralized right there."
     },
     {
-      "a": 18.03,
-      "b": 20.71,
+      "a": 19.38,
+      "b": 21.86,
       "text": "And worn-out lining cells get replaced all the time."
     },
     {
-      "a": 21.11,
-      "b": 23.58,
+      "a": 22.3,
+      "b": 25.04,
       "text": "When that shield breaks down, that's how you get an ulcer."
     }
   ]

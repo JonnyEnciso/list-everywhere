@@ -13,9 +13,10 @@ One Remotion project, five compositions, all made with the `cutout-cartoon-short
 |---|---|---|---|
 | `Windows` | Why are airplane windows round? | engineering | done (Higgsfield job `09845380-41b1-4b55-a357-450c67aa38e2`) |
 | `Onion` | Why does cutting an onion make you cry? | food chemistry | done (job `a4c5b0df-d9b1-4100-8313-18361024e796`) |
-| `Stomach` | Why doesn't your stomach digest itself? | human body | **not generated yet** (out of credits) |
-| `Moon` | Why are the Apollo boot prints still on the Moon? | space | **not generated yet** |
-| `Sixty` | Why does an hour have 60 minutes? | history | **not generated yet** |
+| `Stomach` | Why doesn't your stomach digest itself? | human body | done (job `d3df6dff-775c-4a03-a8ea-c27b80f7cc76`) |
+| `Moon` | Why are the Apollo boot prints still on the Moon? | space | done (job `81a6caaf-0528-48cc-813a-f92debff51f8`) |
+| `Sixty` | Why does an hour have 60 minutes? | history | done (job `c25587df-b070-4eb2-8f2e-c1726e59261f`) |
+| `Jam` | Why do traffic jams appear out of nowhere? | physics (motion-graphics style) | done (job `1c4ac7fd-298c-466d-8440-6de5d8a9ea20`) |
 
 Voice everywhere: ElevenLabs through Higgsfield `text2speech_v2` (variant `elevenlabs`, preset voice "Mark",
 `27c04473-84a9-4b60-a41f-c8e8458bd4f1`), the same voice as the woodpecker and core-hole Shorts.
@@ -26,8 +27,8 @@ Voice everywhere: ElevenLabs through Higgsfield `text2speech_v2` (variant `eleve
 Beats Walking Up the Escalator" by Hidden Mechanics): dark navy grid, flat orange pictograms without outlines, thin white
 lines and icons, kinetic captions with key words in big orange capitals (Inter Display). Original script and topic.
 The ring-road jam is a real optimal-velocity car-following simulation (22 cars, uniform flow unstable at this spacing),
-so the stop-and-go wave and its backward travel come out of the physics. No voice yet (Higgsfield balance 0); the
-captions carry the script over a synthesized music bed, and `retime.py jam <voice>` fits it to a voice later.
+so the stop-and-go wave and its backward travel come out of the physics. Voice added later (same "Mark" voice); the
+captions follow the spoken words over a synthesized music bed.
 
 Captions: Why do traffic jams appear out of nowhere? / In 2008, researchers in Japan put 22 cars on a circular track. /
 No lights, no crashes. Just a steady 30 km/h. / A jam showed up anyway. / One driver eased off a little, the next braked
@@ -87,7 +88,7 @@ reason for 60 is unknown.
 Sources: [Scientific American](https://www.scientificamerican.com/article/experts-time-division-days-hours-minutes/),
 [NIST (PDF)](https://tf.nist.gov/general/pdf/2209.pdf).
 
-## Finish the three without a voice
+## Re-render after changing a voice
 
 ```bash
 npm install
