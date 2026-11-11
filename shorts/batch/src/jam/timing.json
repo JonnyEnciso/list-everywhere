@@ -1,0 +1,43 @@
+{
+  "source": "estimate (4.85 syl/s) - run scripts/retime.py on the real voice",
+  "voiceStart": 0.1,
+  "voiceEnd": 25.64,
+  "voiceFile": null,
+  "sentences": [
+    {
+      "a": 0.15,
+      "b": 2.42,
+      "text": "Why do traffic jams appear out of nowhere?"
+    },
+    {
+      "a": 2.82,
+      "b": 7.35,
+      "text": "In two thousand eight, researchers in Japan put twenty-two cars on a circular track."
+    },
+    {
+      "a": 7.75,
+      "b": 11.67,
+      "text": "No lights, no crashes. Just drive at a steady thirty kilometers an hour."
+    },
+    {
+      "a": 12.07,
+      "b": 13.72,
+      "text": "A jam showed up anyway."
+    },
+    {
+      "a": 14.12,
+      "b": 18.24,
+      "text": "One driver eased off a little, the next braked a bit harder, and so on."
+    },
+    {
+      "a": 18.64,
+      "b": 21.94,
+      "text": "The wave grew into a full stop that crept backward around the track."
+    },
+    {
+      "a": 22.34,
+      "b": 25.64,
+      "text": "So when cars are packed too close, traffic can jam all by itself."
+    }
+  ]
+}

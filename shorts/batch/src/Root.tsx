@@ -6,6 +6,7 @@ import * as Onion from './onion/Onion';
 import * as Stomach from './stomach/Stomach';
 import * as Moon from './moon/Moon';
 import * as Sixty from './sixty/Sixty';
+import * as Jam from './jam/Jam';
 
 const SHORTS: [string, React.FC, number][] = [
   ['Windows', Windows.Windows, Windows.DURATION],
@@ -13,6 +14,7 @@ const SHORTS: [string, React.FC, number][] = [
   ['Stomach', Stomach.Stomach, Stomach.DURATION],
   ['Moon', Moon.Moon, Moon.DURATION],
   ['Sixty', Sixty.Sixty, Sixty.DURATION],
+  ['Jam', Jam.Jam, Jam.DURATION],
 ];
 
 export const RemotionRoot = () => (

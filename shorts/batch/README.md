@@ -20,6 +20,24 @@ One Remotion project, five compositions, all made with the `cutout-cartoon-short
 Voice everywhere: ElevenLabs through Higgsfield `text2speech_v2` (variant `elevenlabs`, preset voice "Mark",
 `27c04473-84a9-4b60-a41f-c8e8458bd4f1`), the same voice as the woodpecker and core-hole Shorts.
 
+## `Jam`: a different style (minimal motion graphics)
+
+"Why do traffic jams appear out of nowhere?" in the style of a reference Short the user shared ("Why Standing Still
+Beats Walking Up the Escalator" by Hidden Mechanics): dark navy grid, flat orange pictograms without outlines, thin white
+lines and icons, kinetic captions with key words in big orange capitals (Inter Display). Original script and topic.
+The ring-road jam is a real optimal-velocity car-following simulation (22 cars, uniform flow unstable at this spacing),
+so the stop-and-go wave and its backward travel come out of the physics. No voice yet (Higgsfield balance 0); the
+captions carry the script over a synthesized music bed, and `retime.py jam <voice>` fits it to a voice later.
+
+Captions: Why do traffic jams appear out of nowhere? / In 2008, researchers in Japan put 22 cars on a circular track. /
+No lights, no crashes. Just a steady 30 km/h. / A jam showed up anyway. / One driver eased off a little, the next braked
+a bit harder, and so on. / The wave grew into a full stop that crept backward around the track. / When cars are packed
+too close, traffic can jam all by itself.
+Facts: Sugiyama et al., "Traffic jams without bottlenecks", New Journal of Physics (2008): 22 cars on a 230 m circuit,
+drivers asked to hold about 30 km/h; a jam formed and moved backward as a wave.
+Sources: [ScienceDaily](https://sciencedaily.com/releases/2008/03/080304075707.htm),
+[EurekAlert](https://www.eurekalert.org/news-releases/677375).
+
 ## Scripts and sources
 
 **Windows (26.4 s voice):** So why are airplane windows round, and not square? In 1954, two Comets, the world's
