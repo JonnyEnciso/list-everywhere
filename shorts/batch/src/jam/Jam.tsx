@@ -279,7 +279,8 @@ export const Jam: React.FC = () => {
           </g>
         )}
       </svg>
-      <Sound voice={TL.voiceFile} voiceStart={TL.voiceStart} cues={cues} />
+      {/* no voice yet: lift the effects and the music bed, which are mixed to sit under a voice */}
+      <Sound voice={TL.voiceFile} voiceStart={TL.voiceStart} cues={TL.voiceFile ? cues : cues.map((c) => ({...c, db: c.db + 18}))} />
     </AbsoluteFill>
   );
 };
